@@ -56,6 +56,9 @@ if(isset($_POST["submit"])){
         $errors['password'] = 'A password is required';
     }else{
         $password = $_POST['password'];
+        if(!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/', $password)){
+            $errors['password'] = 'Password must contain 8 or characters, capital letters and special characters';
+        }
     }
 
     if(empty($_POST['confPassword'])){
